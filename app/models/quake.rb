@@ -4,7 +4,7 @@ require "open-uri"
 
 class Quake < ActiveRecord::Base
   belongs_to :region
-  has_many :intensities
+  has_many :intensities, :dependent => :delete_all
 
   validates :tenki_url, :uniqueness => true
 

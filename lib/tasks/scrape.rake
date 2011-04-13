@@ -42,7 +42,11 @@ end
 
 desc "Scrape new"
 task :scrape_new, :needs => :environment do |t, args|
-  url = "http://tenki.jp/earthquake/entries?p=2"
+
+  # Clear out recent once in case they were updated
+  Quake.where("report_time > ?", ( Time.zone.now - 600.minutes)).delete_all
+
+  url = "http://tenki.jp/earthquake/entries?p=1"
   new_count = 1
   while ((new_count > 0) && url) 
     (new_count,url) = *scrape(url)
