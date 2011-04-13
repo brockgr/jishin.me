@@ -1,0 +1,13 @@
+<h1><%= @city.name_ja %></h1>
+
+<table>
+<% @city.intensities.each do |intensity| %>
+  <tr>
+    <td><%= intensity.time %></td>
+    <td><%= intensity.value %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'Back', cities_path %>

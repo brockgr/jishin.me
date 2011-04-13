@@ -1,0 +1,11 @@
+<table>
+<% @region.intensities.each do |intensity| %>
+  <tr>
+    <td><%= intensity.quake.quake_time %></td>
+    <td><%= intensity.value %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'Back', regions_path %>

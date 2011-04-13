@@ -1,0 +1,19 @@
+<h1>Listing quakes</h1>
+
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Magnitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @quakes.each do |quake| %>
+  <tr>
+    <td><%= quake.quake_time %></td>
+    <td><%= quake.magnitude %></td>
+    <td><%= link_to 'Show', quake %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,11 @@
+<table>
+<% @quake.intensities.each do |intensity| %>
+  <tr>
+    <td><%= intensity.location_ja %></td>
+    <td><%= intensity.value %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to 'Back', quakes_path %>

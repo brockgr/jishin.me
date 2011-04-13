@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  value: MyString
+  region_id: 1
+  city_id: 1
+
+two:
+  value: MyString
+  region_id: 1
+  city_id: 1

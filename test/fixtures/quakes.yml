@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  time: 2011-04-12 22:36:42
+  region_id: 
+  latitude: MyString
+  longitude: MyString
+  magnitude: MyString
+  depth: MyString
+
+two:
+  time: 2011-04-12 22:36:42
+  region_id: 
+  latitude: MyString
+  longitude: MyString
+  magnitude: MyString
+  depth: MyString
