@@ -1,11 +1,12 @@
 <h1>Listing quakes</h1>
 
+<div id="timeplot" style="height: 150px;" data-src="<%= plot_quakes_url(:format => :json) %>" class="magnitude"></div>
+
 <table>
   <tr>
     <th>Time</th>
     <th>Magnitude</th>
-    <th></th>
-    <th></th>
+    <th>Tenki</th>
     <th></th>
   </tr>
 
@@ -13,6 +14,8 @@
   <tr>
     <td><%= quake.quake_time %></td>
     <td><%= quake.magnitude %></td>
+    <td><%= link_to "Tenki", quake.tenki_url %></td>
+    <td><%= link_to "Yahoo", quake.yahoo_url %></td>
     <td><%= link_to 'Show', quake %></td>
   </tr>
 <% end %>

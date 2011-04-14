@@ -44,7 +44,10 @@ desc "Scrape new"
 task :scrape_new, :needs => :environment do |t, args|
 
   # Clear out recent once in case they were updated
-  Quake.where("report_time > ?", ( Time.zone.now - 600.minutes)).delete_all
+  Quake.where("created_at < date(report_time, '+120 minutes')").each do |q|
+    puts "Recheck: #{q.tenki_url}"
+    q.destroy 
+  end
 
   url = "http://tenki.jp/earthquake/entries?p=1"
   new_count = 1
@@ -53,7 +56,7 @@ task :scrape_new, :needs => :environment do |t, args|
   end
 end
 
-desc "Scrape a url"
+desc "Scrape all urls"
 task :scrape_all, :url, :needs => :environment do |t, args|
   url = args.url
   while (url) 

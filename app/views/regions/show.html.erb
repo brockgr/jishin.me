@@ -1,7 +1,7 @@
 <table>
 <% @region.intensities.each do |intensity| %>
   <tr>
-    <td><%= intensity.quake.quake_time %></td>
+    <td><%= intensity.time %></td>
     <td><%= intensity.value %></td>
   </tr>
 <% end %>

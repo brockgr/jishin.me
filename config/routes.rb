@@ -1,7 +1,7 @@
 Shindo::Application.routes.draw do
-  resources :cities, :only => [:index, :show]
-  resources :regions, :only => [:index, :show]
-  resources :quakes, :only => [:index, :show]
+  resources :cities, :only => [:index, :show] { get 'plot', :on => :member }
+  resources :regions, :only => [:index, :show] { get 'plot', :on => :member }
+  resources :quakes, :only => [:index, :show] { get 'plot', :on => :collection }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

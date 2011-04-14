@@ -19,4 +19,16 @@ class QuakesController < ApplicationController
     end
   end
 
+  def plot
+    min = Time.at(((params[:min] || 0).to_i - Time.zone.utc_offset)/1000)
+    max = Time.at(((params[:max] || 0).to_i - Time.zone.utc_offset)/1000)
+    @data = Quake.where("magnitude != '---'").where("quake_time > ? and quake_time < ?", min, max).order(:quake_time).map do |q|
+      [ (q.quake_time.to_i+Time.zone.utc_offset)*1000, q.magnitude.to_f, url_for(q) ]
+    end
+    
+    respond_to do |format|
+      format.json { render :json => @data.to_json }
+    end
+  end
+
 end
