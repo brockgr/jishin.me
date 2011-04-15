@@ -61,19 +61,19 @@ class Quake < ActiveRecord::Base
     doc.search("table#seismicIntensity/tr").each do |row|
       cols = row.search("td")
       if cols.length > 0 
-        if cols.length == 4 # with intensity
+        if cols.length == 4 # with intensity - first line
           intensity  = cols[0].text
           prefecture = cols[1].text
           regions    = cols[2].text
           cities     = cols[3].text
-        elsif cols.length == 3 # colspanned
+        elsif cols.length == 3 # colspanned - subsequent
           prefecture = cols[0].text
           regions    = cols[1].text
           cities     = cols[2].text
         end
       end
 
-      if intensity
+      if intensity && (intensity != '---') # Often see --- when there are no intensities
 
         intensity = intensity.gsub(/\s/,'').sub(/^震度/,'').sub(/弱/, '-').sub(/強/,'+')
         prefecture.gsub!(/\s/,'')
@@ -98,8 +98,16 @@ class Quake < ActiveRecord::Base
           end
         end
       end
-
     end
+
+
+    # No intensities => Foreign quake!
+    if (quake.intensities.count == 0)
+      quake.destroy
+      quake=nil
+    end
+
+    return quake
   end
 
 end

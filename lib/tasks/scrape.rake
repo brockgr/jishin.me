@@ -44,7 +44,7 @@ desc "Scrape new"
 task :scrape_new, :needs => :environment do |t, args|
 
   # Clear out recent once in case they were updated
-  Quake.where("created_at < date(report_time, '+120 minutes')").each do |q|
+  Quake.where("created_at < date(report_time, '+24 hours')").each do |q|
     puts "Recheck: #{q.tenki_url}"
     q.destroy 
   end
