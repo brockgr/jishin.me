@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  city_code: 1
+  post_code: MyString
+  prefecture: MyString
+  prefecture_kana: MyString
+  prefecture_roman: MyString
+  city: MyString
+  city_kana: MyString
+  city_roman: MyString
+  area: MyString
+  area_kana: MyString
+  area_roman: MyString
+
+two:
+  city_code: 1
+  post_code: MyString
+  prefecture: MyString
+  prefecture_kana: MyString
+  prefecture_roman: MyString
+  city: MyString
+  city_kana: MyString
+  city_roman: MyString
+  area: MyString
+  area_kana: MyString
+  area_roman: MyString

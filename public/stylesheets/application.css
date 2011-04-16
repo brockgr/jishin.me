@@ -1,0 +1,11 @@
+    #timeplot .button {
+        position: absolute;
+        cursor: pointer;
+    }
+
+    #timeplot div.button {
+        font-size: smaller;
+        color: #999;
+        background-color: #eee;
+        padding: 2px;
+    }

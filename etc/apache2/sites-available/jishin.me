@@ -1,0 +1,24 @@
+LoadModule passenger_module /usr/local/rvm/gems/ruby-1.9.2-p180/gems/passenger-3.0.7/ext/apache2/mod_passenger.so
+PassengerRoot /usr/local/rvm/gems/ruby-1.9.2-p180/gems/passenger-3.0.7
+PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.2-p180/ruby
+
+<VirtualHost *:80>
+  ServerName shindo.me
+  ServerAlias www.shindo.me
+  DocumentRoot /home/www/shindo.me/public
+
+  XSendFile on
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml application/javascript text/css
+  # Asset Expiration
+  ExpiresActive On
+  <FilesMatch "\.(ico|gif|jpe?g|png|js|css)$">
+    FileETag MTime Size
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+
+  <Directory /home/www/shindo.me/public>
+    AllowOverride all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
+

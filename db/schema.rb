@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412134001) do
+ActiveRecord::Schema.define(:version => 20110415150840) do
 
   create_table "cities", :force => true do |t|
     t.string   "name_en"
@@ -18,6 +18,25 @@ ActiveRecord::Schema.define(:version => 20110412134001) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "city_codes", :force => true do |t|
+    t.integer  "city_code"
+    t.string   "prefecture"
+    t.string   "prefecture_kana"
+    t.string   "prefecture_roman"
+    t.string   "city"
+    t.string   "city_kana"
+    t.string   "city_roman"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "city_codes", ["city"], :name => "index_city_codes_on_city"
+  add_index "city_codes", ["city_kana"], :name => "index_city_codes_on_city_kana"
+  add_index "city_codes", ["city_roman"], :name => "index_city_codes_on_city_roman"
+  add_index "city_codes", ["prefecture"], :name => "index_city_codes_on_prefecture"
+  add_index "city_codes", ["prefecture_kana"], :name => "index_city_codes_on_prefecture_kana"
+  add_index "city_codes", ["prefecture_roman"], :name => "index_city_codes_on_prefecture_roman"
 
   create_table "intensities", :force => true do |t|
     t.integer  "quake_id"
