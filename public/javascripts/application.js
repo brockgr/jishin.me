@@ -7,31 +7,43 @@
     var max = (new Date(2012, 1, 1)).getTime();
     var url_base = $el.data('src');
 
-    $el.width(800);
-    $el.height(300);
-
     var options = { 
       xaxis:  { mode: "time" },
       yaxis:  { zoomRange: false, panRange: false },
       points: { show: true, radius: 1 },
       zoom:   { interactive: true },
       pan:    { interactive: true, frameRate: 30 },
-      grid:   { hoverable: true, clickable: true }
+      series: { color: "#3C1D8E" },
+      grid:   { hoverable: true, clickable: true, backgroundColor: { colors: ["#FFDAD9","#FFECD7","#FEFCE0","#DFEDD6"] } }
     };
 
     if ($el.hasClass('intensity')) {
       options.yaxis.ticks = [[0,""], [1,"1"], [2,"2"],[3,"3"],[4,"4"],[5,"5-"],[6,"5+"],[7,"6-"],[8,"6+"],[9,"7"]];
       options.yaxis.max = 9;
-      options.yaxis.tickLength = 0;
-      options.points.radius = 2;
+      //options.yaxis.tickLength = 0;
+      options.points = {};
+      options.bars = { show: true, fill: true, color: 4 };
+      //options.series = { color: "#3C1D8E" };
+      
     } else if ($el.hasClass('magnitude')) {
       options.yaxis.max = 8;
     }
 
     plot = $.plot($el, [], options);
 
-    // add zoom out button 
-    $('<div class="button" style="right:20px;top:20px">zoom out</div>').appendTo($el).click(function (e) {
+    // add zoom buttons
+    $('<button class="zoomin">Zoom In</button>').button({
+      text: false,
+      icons: { primary: "ui-icon-zoomin" }
+    }).appendTo($el).click(function (e) {
+        e.preventDefault();
+        plot.zoom();
+    });
+
+    $('<button class="zoomout">Zoom Out</button>').button({
+      text: false,
+      icons: { primary: "ui-icon-zoomout" }
+    }).appendTo($el).click(function (e) {
         e.preventDefault();
         plot.zoomOut();
     });

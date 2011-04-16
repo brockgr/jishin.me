@@ -6,6 +6,7 @@ require "iconv"
 desc "Parse KEN_ALL(_ROME).CSV data"
 task :postcodes, :needs => :environment do |t, args|
 
+if false
   CityCode.delete_all
 
   count = 0
@@ -43,6 +44,15 @@ task :postcodes, :needs => :environment do |t, args|
       cc.save
     end
     seen_en[city_code]=true
+  end
+
+end
+  City.all.each do |city|
+    if (cc = CityCode.find_by_name_ja(city)) 
+puts cc.city_roman
+      city.name_en = cc.city_roman
+      city.save
+    end
   end
 
 end

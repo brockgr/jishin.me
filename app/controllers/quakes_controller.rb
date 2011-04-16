@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
 class QuakesController < ApplicationController
   def index
-    @quakes = Quake.where("magnitude != '---'").order(:quake_time)
+    @quakes = Quake.where("magnitude != '---'").order('quake_time desc')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +16,7 @@ class QuakesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @quake.intensities.includes(:location).to_json(:only => [:value], :methods => [:location_ja]) }
+      format.json { render :json => @quake.to_json }
       format.xml  { render :xml => @quake }
     end
   end

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Intensity < ActiveRecord::Base
   belongs_to :quake
   belongs_to :location, :polymorphic => true

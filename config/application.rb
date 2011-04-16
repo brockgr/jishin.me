@@ -33,7 +33,9 @@ module Shindo
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.5.2.min jquery-ui-1.8.11.custom.min rails jquery.flot.min jquery.flot.navigate.min)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.5.2.min jquery-ui-1.8.11.custom.min rails jquery.flot.min jquery.flot.navigate.min jquery.flot.resize.min)
+
+    config.action_view.stylesheet_expansions[:defaults] = %w(jqueryui/jquery-ui-1.8.11.custom application)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

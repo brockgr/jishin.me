@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class RegionsController < ApplicationController
   def index
     @regions = Region.all
