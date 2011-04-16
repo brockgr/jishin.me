@@ -3,9 +3,9 @@ PassengerRoot /usr/local/rvm/gems/ruby-1.9.2-p180/gems/passenger-3.0.7
 PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.2-p180/ruby
 
 <VirtualHost *:80>
-  ServerName shindo.me
-  ServerAlias www.shindo.me
-  DocumentRoot /home/www/shindo.me/public
+  ServerName jishin.me
+  ServerAlias www.jishin.me
+  DocumentRoot /home/www/jishin.me/public
 
   XSendFile on
   AddOutputFilterByType DEFLATE text/html text/plain text/xml application/javascript text/css
@@ -16,7 +16,7 @@ PassengerRuby /usr/local/rvm/wrappers/ruby-1.9.2-p180/ruby
     ExpiresDefault "access plus 1 year"
   </FilesMatch>
 
-  <Directory /home/www/shindo.me/public>
+  <Directory /home/www/jishin.me/public>
     AllowOverride all
     Options -MultiViews
   </Directory>
