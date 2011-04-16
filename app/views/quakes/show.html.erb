@@ -1,8 +1,22 @@
+<h1>Details of earthquake</h1>
+
+<p>
+M<%= @quake.magnitude %> - <%= @quake.depth %> <%= @quake.region.name %>
+<br>
+<%= l @quake.quake_time %> (Reported <%= l @quake.report_time %>)
+</p>
+
+<p class="links">
+<%= image_tag "tenki.png", :width => 16, :height => 16 %><%= link_to "Tenki", @quake.tenki_url %>
+&nbsp;
+<%= image_tag "yahoo.png", :width => 16, :height => 16 %><%= link_to "Yahoo", @quake.yahoo_url %>
+</p>
+
 <table>
 <% @quake.intensities.each do |intensity| %>
   <tr>
-    <td><%= intensity.location_ja %></td>
     <td><%= intensity.value %></td>
+    <td><%= link_to intensity.location.name, url_for(intensity.location) %></td>
   </tr>
 <% end %>
 </table>

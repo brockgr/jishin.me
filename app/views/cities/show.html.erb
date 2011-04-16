@@ -1,11 +1,11 @@
 <h1>Earthquake intensities in <%= @city.name %></h1>
 
-<div id="timeplot" data-src="<%= plot_city_url(:format => :json) %>" class="intensity"></div>
+<div data-src="<%= plot_city_url(:format => :json) %>" class="intensity timeplot"></div>
 
 <table>
 <% @city.intensities.each do |intensity| %>
   <tr>
-    <td><%= intensity.time %></td>
+    <td><%= l intensity.time %></td>
     <td><%= intensity.value %></td>
   </tr>
 <% end %>

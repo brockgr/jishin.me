@@ -8,6 +8,7 @@ class Quake < ActiveRecord::Base
 
   validates :tenki_url, :uniqueness => true
 
+
   def yahoo_url 
     "http://typhoon.yahoo.co.jp/weather/jp/earthquake/%04d-%02d-%02d-%02d-%02d.html" % [
        quake_time.year,

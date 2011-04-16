@@ -1,17 +1,6 @@
-<h1>Listing cities</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @cities.each do |city| %>
-  <tr>
-    <td><%= city.name_ja %></td>
-    <td><%= link_to 'Show', city %></td>
-  </tr>
-<% end %>
-</table>
+<h1>Earthquake intensity by location</h1>
+<div class="ui-widget">
+  <label for="search">Location: </label>
+  <input id="search" data-src="<%= search_cities_url(:format => :json) %>"/>
+</div>
+<%= link_to "All quakes", quakes_path %>

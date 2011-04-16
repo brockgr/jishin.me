@@ -2,12 +2,10 @@
 
 class CitiesController < ApplicationController
   def index
-    @cities = City.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render  :json => @cities.to_json }
-      format.xml  { render :xml => @cities }
+      format.json { render :json => City.all.to_json }
+      format.xml  { render :xml => City.all }
     end
   end
 
@@ -24,10 +22,22 @@ class CitiesController < ApplicationController
   def plot
     min = Time.at(((params[:min] || 0).to_i - Time.zone.utc_offset)/1000)
     max = Time.at(((params[:max] || 0).to_i - Time.zone.utc_offset)/1000)
-    @data = City.find(params[:id]).intensities.includes(:quake).where("quakes.quake_time > ? and quakes.quake_time < ?", min, max).order("quakes.quake_time").map do |i|
-      [ (i.quake.quake_time.to_i+Time.zone.utc_offset)*1000, i.value.to_f, url_for(i.quake) ]
+    @data = City.find(params[:id]).intensities.includes(:quake).where("quakes.quake_time > ? and quakes.quake_time < ?", min, max).order("quakes.quake_time").map { |i| [
+        (i.quake.quake_time.to_i+Time.zone.utc_offset)*1000,
+        i.value_i,
+        url_for(i.quake),
+        "#{l i.quake.quake_time}<br>#{i.quake.region.name}<br>M#{i.quake.magnitude} - #{i.quake.depth}"
+    ] }
+    respond_to do |format|
+      format.json { render :json => @data.to_json }
     end
+  end
 
+  def search
+    term = params[:term]
+    @data = City.where("lower(name_en) like ? or lower(name_ja) like ?", "%#{term.downcase}%", "%#{term.downcase}%").all.map do |c|
+      { :id => c.id, :label => c.name  }
+    end
     respond_to do |format|
       format.json { render :json => @data.to_json }
     end

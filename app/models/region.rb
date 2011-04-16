@@ -4,9 +4,14 @@ class Region < ActiveRecord::Base
 
   has_many :quakes
 
-  #has_many :intensities, :as => :location
-
   include Location
 
+  def name
+    if name_en
+      "#{name_en} (#{name_ja})"
+    else
+      "#{name_ja}"
+    end
+  end
 
 end

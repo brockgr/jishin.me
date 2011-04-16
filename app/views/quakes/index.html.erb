@@ -1,22 +1,16 @@
 <h1>All Japan Eathquakes</h1>
 
-<div id="timeplot" data-src="<%= plot_quakes_url(:format => :json) %>" class="magnitude"></div>
+<div data-src="<%= plot_quakes_url(:format => :json) %>" class="magnitude timeplot"></div>
 
 <table>
-  <tr>
-    <th>Time</th>
-    <th>Magnitude</th>
-    <th>Tenki</th>
-    <th></th>
-  </tr>
 
 <% @quakes.each do |quake| %>
   <tr>
-    <td><%= quake.quake_time %></td>
+    <td><%= l quake.quake_time %></td>
     <td><%= quake.magnitude %></td>
+    <td><%= link_to 'Show', quake %></td>
     <td><%= link_to "Tenki", quake.tenki_url %></td>
     <td><%= link_to "Yahoo", quake.yahoo_url %></td>
-    <td><%= link_to 'Show', quake %></td>
   </tr>
 <% end %>
 </table>
