@@ -30,8 +30,11 @@ GEM
     activesupport (3.0.5)
     arel (2.0.9)
     builder (2.1.2)
+    comma (0.4.1)
+      activesupport (>= 2.2.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fastercsv (1.5.4)
     i18n (0.5.0)
     json (1.4.6)
     mail (2.2.15)
@@ -71,6 +74,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  comma
+  fastercsv
   json
   nokogiri
   rails (= 3.0.5)

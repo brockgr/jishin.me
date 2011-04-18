@@ -11,11 +11,10 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @city.intensities.to_json(:only => [:value], :methods => [:time]) }
-      format.xml  { render :xml => @city }
+      format.xml  { render :xml => @city.intensities }
     end
   end
 

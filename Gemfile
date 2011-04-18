@@ -8,6 +8,8 @@ gem 'rails', '3.0.5'
 gem 'sqlite3'
 gem 'nokogiri'
 gem 'json'
+gem 'fastercsv'
+gem 'comma'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -26,4 +26,9 @@ class Intensity < ActiveRecord::Base
     end
   end
 
+  comma do
+    time
+    value 
+  end
+
 end
