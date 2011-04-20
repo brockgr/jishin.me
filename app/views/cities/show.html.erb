@@ -1,9 +1,16 @@
 <h1>Earthquake intensities in <%= @city.name %></h1>
 
+<div class="ui-widget">
+  <label for="search">Location: </label>
+  <input id="search" data-src="<%= search_cities_url(:format => :json) %>"/>
+</div>
+<%= link_to "All quakes", quakes_path %>
+<br>
+
 <div data-src="<%= plot_city_url(:format => :json) %>" class="intensity timeplot"></div>
 
 <table>
-<% @city.intensities.each do |intensity| %>
+<% @city.intensities.includes(:quake).order('quakes.quake_time desc').reverse.each do |intensity| %>
   <tr>
     <td><%= l intensity.time %></td>
     <td><%= intensity.value %></td>

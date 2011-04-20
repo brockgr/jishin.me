@@ -119,12 +119,14 @@
           });
         },
         select: function(ev, $ui) {  
+	  return window.location.href = '/cities/'+$ui.item.id;
+/*
           var $plot = $('<div><h2>'+$ui.item.value+'</h2><div class="intensity timeplot" data-src="/cities/'+$ui.item.id+'/plot.json" class="intensity"></div></div>').appendTo($('body'));
           setup_graph($plot.find('.timeplot'));
-console.log($el);
           setTimeout(function () {
             $el.val('');
           }, 0);
+*/
         }
 
       });
