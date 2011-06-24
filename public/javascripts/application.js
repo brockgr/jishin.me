@@ -6,10 +6,26 @@
 
     $(".timeplot").each( function (n,el) {setup_graph($(el))} );
 
+    function getUrlVars() {
+      var vars = {}, hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars[hash[0]] = hash[1];
+      }
+      return vars;
+    }
+
     function setup_graph($el) {
-      var plot, data = [];
+      var plot, data = [], vars = getUrlVars();
+console.log(vars);
       var min = (new Date(2011, 2, 11)).getTime();
-      var max = (new Date(2012, 1, 1)).getTime();
+console.log(min);
+      if (vars["days"]) {
+	min = (new Date()).getTime() - (vars["days"] * 24 * 60 * 60000);
+      }
+console.log(min);
+      var max = (new Date()).getTime();
       var url_base = $el.data('src');
 
       var options = { 
@@ -53,7 +69,8 @@
       });
 
       function get_data(min,max) {
-        $.get($el.data('src')+"?min="+min+"&max="+max, function (new_data, textStatus, jqXHR) {
+	url = $el.data('src').replace(/\?.*/,'');
+        $.get(url+"?min="+min+"&max="+max, function (new_data, textStatus, jqXHR) {
           data = data.concat(new_data)
           plot.setData([data]);
           plot.setupGrid();
