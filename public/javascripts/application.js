@@ -18,13 +18,13 @@
 
     function setup_graph($el) {
       var plot, data = [], vars = getUrlVars();
-console.log(vars);
+//console.log(vars);
       var min = (new Date(2011, 2, 11)).getTime();
-console.log(min);
+//console.log(min);
       if (vars["days"]) {
 	min = (new Date()).getTime() - (vars["days"] * 24 * 60 * 60000);
       }
-console.log(min);
+//console.log(min);
       var max = (new Date()).getTime();
       var url_base = $el.data('src');
 
