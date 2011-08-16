@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20110710134709) do
     t.datetime "updated_at"
   end
 
+  add_index "quakes", ["magnitude"], :name => "index_quakes_on_magnitude"
   add_index "quakes", ["quake_time"], :name => "index_quakes_on_quake_time"
 
   create_table "regions", :force => true do |t|

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class QuakesController < ApplicationController
+  #caches_page :index, :show
+
   def index
     @quakes = Quake.where("magnitude != '---'").order('quake_time desc')
 
@@ -24,16 +26,23 @@ class QuakesController < ApplicationController
   def plot
     min = Time.at(((params[:min] || 0).to_i - Time.zone.utc_offset)/1000)
     max = Time.at(((params[:max] || 0).to_i - Time.zone.utc_offset)/1000)
+regions = Hash[Region.all.map { |r| [ r.id, r.name] }]
     @data = Quake.where("magnitude != '---'").where("quake_time > ? and quake_time < ?", min, max).order(:quake_time).map { |q| [
         (q.quake_time.to_i+Time.zone.utc_offset)*1000, q.magnitude.to_f,
-        url_for(q),
-        "#{l q.quake_time}<br>#{q.region.name}<br>M#{q.magnitude} - #{q.depth}"
+        #url_for(q),
+	"/quakes/#{q.id}",
+        #"#{l q.quake_time}<br>#{q.region.name}<br>M#{q.magnitude} - #{q.depth}"
+        "#{l q.quake_time}<br>#{regions[q.region_id]}<br>M#{q.magnitude} - #{q.depth}"
 
     ] }
     
     respond_to do |format|
-      format.json { render :json => @data.to_json }
+      format.json { render :json => @data }
     end
+  end
+
+  def clear_cache 
+   File.rm "quakes.html", "quakes/*"
   end
 
 end

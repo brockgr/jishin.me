@@ -8,9 +8,9 @@
   <tr>
     <td><%= l quake.quake_time %></td>
     <td><%= quake.magnitude %></td>
-    <td><%= link_to 'Show', quake %></td>
-    <td><%= link_to "Tenki", quake.tenki_url %></td>
-    <td><%= link_to "Yahoo", quake.yahoo_url %></td>
+    <td><a href="<%= "/quakes/#{quake.id}" %>">Show</a></td>
+    <td><a href="<%= quake.tenki_url %>">Tenki</a></td>
+    <td><a href="<%= quake.yahoo_url %>">Yahoo</a></td>
   </tr>
 <% end %>
 </table>
