@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Shindo::Application.config.secret_token = 'bf13359cb7d51fe1aaef808c8d520108c84dea83928317940bc599acdb9af996bc8af84af19905ba39bbd4878ea2119b23be318dda818ac8e2236d26d602e9e5'
+Shindo::Application.config.secret_token = '80efa4c57dec5c9d0e290a9b0091ef4d23b579bd17810070dc6a66b6c8435f5a1938e3cb0b8a81e86ed32c07d0562ee36111be887a52954100f53d72630a78d8'
