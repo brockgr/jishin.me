@@ -7,7 +7,7 @@
 <%= link_to "All quakes", quakes_path %>
 <br>
 
-<div data-src="<%= plot_city_url(:format => :json) %>" class="intensity timeplot"></div>
+<div data-src="<%= plot_city_url(:format => :json) %>" class="intensity timeplot"><%= image_tag "loader.gif" %></div>
 
 <table>
 <% @city.intensities.includes(:quake).order('quakes.quake_time desc').reverse.each do |intensity| %>
