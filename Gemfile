@@ -11,6 +11,10 @@ gem 'json'
 gem 'fastercsv'
 gem 'comma'
 
+gem 'jquery-rails'
+gem 'modernizr-rails'
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
