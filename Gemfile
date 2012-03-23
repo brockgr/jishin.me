@@ -14,6 +14,12 @@ gem 'comma'
 gem 'jquery-rails'
 gem 'modernizr-rails'
 
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
