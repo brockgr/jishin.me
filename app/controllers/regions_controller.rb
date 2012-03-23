@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class RegionsController < ApplicationController
+  caches_page :plot, :show
+
   def index
     @regions = Region.all
 
