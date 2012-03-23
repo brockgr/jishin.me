@@ -6,5 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui-1.8.11.custom.min
 //= require jquery.flot.min
-//= require_tree .
+//= require jquery.flot.navigate.min
+//= require jquery.flot.resize.min
+//= require jishin.js
