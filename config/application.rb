@@ -32,15 +32,21 @@ module Shindo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.5.2.min jquery-ui-1.8.11.custom.min rails jquery.flot.min jquery.flot.navigate.min jquery.flot.resize.min)
-
-    config.action_view.stylesheet_expansions[:defaults] = %w(jqueryui/jquery-ui-1.8.11.custom application)
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
+
+    # Look for jqueryui up the custome theme
+    initializer :after_append_asset_paths, :group => :all, :after => :append_assets_path do
+      config.assets.paths.unshift Rails.root.join("app", "assets", "stylesheets", "jquery-ui", "humanity").to_s
+    end
   end
 end

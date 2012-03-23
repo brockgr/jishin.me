@@ -8,7 +8,7 @@
   <tr>
     <td><%= l quake.quake_time %></td>
     <td><%= quake.magnitude %></td>
-    <td><a href="<%= "/quakes/#{quake.id}" %>">Show</a></td>
+    <td><a href="<%= url_for quake %>">Show</a></td>
     <td><a href="<%= quake.tenki_url %>">Tenki</a></td>
     <td><a href="<%= quake.yahoo_url %>">Yahoo</a></td>
   </tr>

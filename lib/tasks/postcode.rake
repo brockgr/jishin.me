@@ -4,7 +4,7 @@ require "csv"
 require "iconv"
 
 desc "Parse KEN_ALL(_ROME).CSV data"
-task :postcodes, :needs => :environment do |t, args|
+task :postcodes => :environment do |t, args|
 
 if false
   CityCode.delete_all

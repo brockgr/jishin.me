@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class QuakesController < ApplicationController
-  #caches_page :index, :show
+
+  caches_page :index, :plot, :show
 
   def index
     @quakes = Quake.where("magnitude != '---'").order('quake_time desc')
@@ -35,14 +36,10 @@ regions = Hash[Region.all.map { |r| [ r.id, r.name] }]
         "#{l q.quake_time}<br>#{regions[q.region_id]}<br>M#{q.magnitude} - #{q.depth}"
 
     ] }
-    
+
     respond_to do |format|
       format.json { render :json => @data }
     end
-  end
-
-  def clear_cache 
-   File.rm "quakes.html", "quakes/*"
   end
 
 end

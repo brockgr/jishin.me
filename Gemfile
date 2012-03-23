@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,6 +10,16 @@ gem 'nokogiri'
 gem 'json'
 gem 'fastercsv'
 gem 'comma'
+
+gem 'jquery-rails'
+gem 'modernizr-rails'
+
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

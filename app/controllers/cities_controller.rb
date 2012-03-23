@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+
 class CitiesController < ApplicationController
+
+  caches_page :plot, :show
+
   def index
     respond_to do |format|
       format.html # index.html.erb
