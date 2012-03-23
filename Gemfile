@@ -7,7 +7,7 @@ gem 'rails'
 
 gem 'sqlite3'
 gem 'nokogiri'
-gem 'json'
+gem 'yajl-ruby'
 gem 'fastercsv'
 gem 'comma'
 
