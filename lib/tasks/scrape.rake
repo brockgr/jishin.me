@@ -71,6 +71,8 @@ task :scrape_new => :environment do |t, args|
   while ((new_count > 0) && url) 
     (new_count,url) = *scrape(url)
   end
+
+  system('curl http://jishin.me/quakes');
 end
 
 desc "Scrape all urls"

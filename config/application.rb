@@ -46,7 +46,7 @@ module Shindo
 
     # Look for jqueryui up the custome theme
     initializer :after_append_asset_paths, :group => :all, :after => :append_assets_path do
-      config.assets.paths.unshift Rails.root.join("app", "assets", "stylesheets", "jquery-ui", "humanity").to_s
+      config.assets.paths.unshift Rails.root.join("app", "assets", "stylesheets", "jqueryui", "humanity").to_s
     end
   end
 end
