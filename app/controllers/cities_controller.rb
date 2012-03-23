@@ -3,7 +3,7 @@
 
 class CitiesController < ApplicationController
 
-  caches_page :plot, :show
+  caches_page :show
 
   def index
     respond_to do |format|

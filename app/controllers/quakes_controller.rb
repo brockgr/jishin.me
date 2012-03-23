@@ -2,7 +2,7 @@
 
 class QuakesController < ApplicationController
 
-  caches_page :index, :plot, :show
+  caches_page :index, :show
 
   def index
     @quakes = Quake.where("magnitude != '---'").order('quake_time desc')
