@@ -9,7 +9,7 @@ class QuakesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @quakes.to_json }
+      format.json { render :json => @quakes }
       format.xml  { render :xml => @quakes }
     end
   end

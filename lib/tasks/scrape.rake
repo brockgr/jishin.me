@@ -21,9 +21,9 @@ def scrape(url)
 
   new_count = 0
   doc = Nokogiri::HTML(open(url), nil, 'utf-8')
-  doc.search("table#seismicInfoEntries/tr").each do |row|
+  doc.search("table#earthquake_recent_entries_table/tr").each do |row|
     row.css('td a').each do |link|
-      detail_url = base+link.get_attribute('href')
+      detail_url = link.get_attribute('href')
       if Quake.where(:tenki_url => detail_url).empty?
         pause
         new_count += 1
@@ -43,7 +43,7 @@ def scrape(url)
     end
   end
 
-  if next_url = doc.search('#wrap_seismicInfoTableEntries a[text()="次へ"]').first.get_attribute('href')
+  if next_url = doc.search('a.move_next_link').first.get_attribute('href')
     url = base+next_url
     return [new_count,url]
   else

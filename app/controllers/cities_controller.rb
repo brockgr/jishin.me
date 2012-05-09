@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => City.all.to_json }
+      format.json { render :json => City.all }
       format.xml  { render :xml => City.all }
     end
   end
@@ -32,7 +32,7 @@ class CitiesController < ApplicationController
         "#{l i.quake.quake_time}<br>#{i.quake.region.name}<br>M#{i.quake.magnitude} - #{i.quake.depth}"
     ] }
     respond_to do |format|
-      format.json { render :json => @data.to_json }
+      format.json { render :json => @data }
     end
   end
 
@@ -42,7 +42,7 @@ class CitiesController < ApplicationController
       { :id => c.id, :label => c.name  }
     end
     respond_to do |format|
-      format.json { render :json => @data.to_json }
+      format.json { render :json => @data }
     end
   end
 

@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'oj'
 gem 'rails'
 
 # Bundle edge Rails instead:
